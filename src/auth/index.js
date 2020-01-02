@@ -1,7 +1,8 @@
-const API = "http://"
+const API = "http://localhost:8080/api/v1/user"
 
 export const signup = user => {
-    return fetch(`${API}/signup`, {
+    console.log(user);
+    return fetch(`${API}`, {
         method: "POST",
         headers: {
             Accept: "application/json",

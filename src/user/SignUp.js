@@ -21,6 +21,7 @@ const Signup = () => {
         event.preventDefault();
         setValues({ ...values, error: false });
         signup({ email, password, role }).then(data => {
+            console.log(data);
             if (data.error || data.err) {
                 setValues({ ...values, error: data.error || data.err, success: false });
             } else {
@@ -59,10 +60,11 @@ const Signup = () => {
             <div className="form-group">
                 <label className="text-muted">성별</label>
                 <select
-                    onChange={handleChange("rold")}
+                    onChange={handleChange("role")}
                 >
-                    <option selected value="man">man</option>
-                    <option value="woman">woman</option>
+                    <option selected value="">유형을 선택해주세요</option>
+                    <option value="PASSENGER">사용자</option>
+                    <option value="DRIVER">운전자</option>
                 </select>
             </div>
             <button onClick={clickSubmit} className="btn btn-primary">
