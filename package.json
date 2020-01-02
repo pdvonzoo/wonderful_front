@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config webpack.prod.js"
+    "build": "webpack --config webpack.prod.js",
+    "startDev": "webpack-dev-server --config webpack.dev.js",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -33,6 +35,7 @@
     "html-webpack-plugin": "^3.2.0",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.10.1",
     "webpack-merge": "^4.2.2"
   },
   "eslintConfig": {
@@ -45,5 +48,10 @@
       "react/jsx-filename-extension": 0,
       "react/jsx-one-expression-per-line": 0
     }
+  },
+  "dependencies": {
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "react-router-dom": "^5.1.2"
   }
 }
