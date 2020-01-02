@@ -1,0 +1,34 @@
+{
+  "books": [
+    {
+      "title": "Test1",
+      "writer": "위메프",
+      "publisher": "리액틑출판사",
+      "publisherYear": 2019,
+      "createAt": "1929393",
+      "updateAt": "1231232412",
+      "isbn": 213912312,
+      "isRental": true
+    },
+    {
+      "title": "Test1",
+      "writer": "위메프",
+      "publisher": "리액틑출판사",
+      "publisherYear": 2019,
+      "createAt": "1929393",
+      "updateAt": "1929393",
+      "isbn": 213912312,
+      "isRental": true
+    },
+    {
+      "title": "Test1",
+      "writer": "위메프",
+      "publisher": "리액틑출판사",
+      "publisherYear": 2019,
+      "createAt": "1929393",
+      "updateAt": "1929393",
+      "isbn": 213912312,
+      "isRental": true
+    }
+  ]
+}
