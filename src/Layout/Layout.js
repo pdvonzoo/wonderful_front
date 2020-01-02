@@ -10,6 +10,7 @@ const Layout = ({ children }) => {
         <Link to={{ pathname: "/signup" }}>sign up</Link>
         <Link to={{ pathname: "/signup" }}>sign up</Link>
         <Link to={{ pathname: "/userhistory" }}>My</Link>
+        <Link to={{ pathname: "/error" }}>Error</Link>
         <Search />
       </header>
       {children}
