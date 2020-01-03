@@ -1,7 +1,7 @@
 import React from "react";
-import AdminPage from '../components/adminUser/AdminPage'
+import AdminUser from '../components/adminUser/AdminUser'
 const Admin = () => {
-  return <AdminPage />
+  return <AdminUser />
 };
 
 export default Admin;
