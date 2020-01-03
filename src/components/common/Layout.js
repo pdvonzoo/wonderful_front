@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 
-const Layout = ({ children }) => {
+const Layout = () => {
   return (
     <>
       <header>
@@ -13,7 +13,7 @@ const Layout = ({ children }) => {
         <Link style={{ marginLeft: '10px' }} to={{ pathname: "/error" }}>Error</Link>
         <Link style={{ marginLeft: '10px' }} to={{ pathname: "/admin" }}> admin</Link>
       </header>
-      {children}
+      {/* {children} */}
     </>
   );
 };
