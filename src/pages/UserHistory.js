@@ -1,9 +1,8 @@
 import React, { useState, useCallback } from "react";
 
-import Layout from "../Layout/Layout";
-import BookList from "../core/BookList";
-import RentList from "./RentList";
-import UserBooks from "./UserBooks";
+import Layout from "../components/common/Layout";
+import RentList from "../components/Book/RentList";
+import UserBooks from "../components/Book/UserBooks";
 const UserHistory = () => {
   const [clickPage, setClickPage] = useState("1");
 
@@ -16,7 +15,7 @@ const UserHistory = () => {
   );
 
   return (
-    <Layout>
+    <>
       <p>UserHistory</p>
       <div>
         <button value={1} onClick={changePage}>
@@ -27,7 +26,7 @@ const UserHistory = () => {
         </button>
       </div>
       {clickPage === "1" ? <RentList /> : <UserBooks />}
-    </Layout>
+    </>
   );
 };
 

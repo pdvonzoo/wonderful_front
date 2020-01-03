@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { signup } from "../auth";
+import { signup } from "../../auth";
 
-const Signup = () => {
+const SignUpComponent = () => {
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -100,4 +100,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default SignUpComponent;
