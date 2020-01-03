@@ -4,14 +4,19 @@ import Routes from "./Routes";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import rootReducer from "./modules";
+import "./reset.css";
 import { composeWithDevTools } from "redux-devtools-extension";
+
 const store = createStore(
-  rootReducer,
-  // composeWithDevTools(applyMiddleware)
+    rootReducer,
+    // composeWithDevTools(applyMiddleware)
 );
 ReactDOM.render(
-  <Provider store={store}>
-    <Routes />
-  </Provider>,
-  document.getElementById("root")
+    <Provider store={store}>
+        <Routes />
+    </Provider>,
+    document.getElementById("root")
 );
+
+
+ReactDOM.render(<Routes />, document.getElementById("root"));
