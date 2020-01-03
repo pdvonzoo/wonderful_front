@@ -49,22 +49,7 @@ const AdminPage = () => {
   ];
   return (
     <div>
-<<<<<<< HEAD
-      {books &&
-        books.map((val, idx) => {
-          return (
-            <div key={idx}>
-              <br />
-              <li>책 이름 : {val.name}</li>
-              <li>총 권수 {val.count}</li>
-              <li>입고 날짜 {val.date}</li>
-              <li>대여 수 {val.rented}</li>
-            </div>
-          );
-        })}
-=======
       {books && books.map((book, idx) => <BookInfo book={book} />)}
->>>>>>> c1107be5f15591b15fe6d29f61bfdd5857c8aefa
     </div>
   );
 };
