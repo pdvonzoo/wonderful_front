@@ -5,6 +5,7 @@ import BookList from "../components/Book/BookList";
 import styled from "styled-components";
 
 const HomeConatainer = styled.div`
+  padding-top: 10rem;
   background-color: #e4e4e4;
   height: 100%;
 `;
