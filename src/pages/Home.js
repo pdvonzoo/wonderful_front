@@ -16,5 +16,7 @@ export default () => {
     setDatas(Data.books);
   }, []);
 
-  return <HomeConatainer><BookList datas={datas} width="33.3%" height="" display="flex" /></HomeConatainer>;
+  return <HomeConatainer>
+    <BookList datas={datas} width="33.3%" display="flex" />
+  </HomeConatainer>;
 };
