@@ -1,4 +1,5 @@
 import React from "react";
+import BookInfo from "./BookInfo";
 
 const AdminPage = () => {
   const books = [
@@ -48,6 +49,7 @@ const AdminPage = () => {
   ];
   return (
     <div>
+<<<<<<< HEAD
       {books &&
         books.map((val, idx) => {
           return (
@@ -60,6 +62,9 @@ const AdminPage = () => {
             </div>
           );
         })}
+=======
+      {books && books.map((book, idx) => <BookInfo book={book} />)}
+>>>>>>> c1107be5f15591b15fe6d29f61bfdd5857c8aefa
     </div>
   );
 };
