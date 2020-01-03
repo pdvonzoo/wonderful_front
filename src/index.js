@@ -4,10 +4,10 @@ import Routes from "./Routes";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
 import rootReducer from "./modules";
-
+import { composeWithDevTools } from "redux-devtools-extension";
 const store = createStore(
   rootReducer,
-  composeWithDevTools(applyMiddleware(sagaMiddleware))
+  // composeWithDevTools(applyMiddleware)
 );
 ReactDOM.render(
   <Provider store={store}>

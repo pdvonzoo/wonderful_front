@@ -1,5 +1,5 @@
 import React from "react";
-import BookListComponent from "../components/BookListComponent";
+import BookListComponent from "../components/Book/BookList";
 
 const BookList = () => {
   return <BookListComponent />;

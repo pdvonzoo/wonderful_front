@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Data from "../data.json";
+import Data from "./data.json";
 import Book from "./Book";
 import { rentOneBook } from "./BookListAPI";
 const BookList = () => {
