@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { SEARCH_BOOK_REQUEST } from '../../modules/books'
 const searchResultList = () => {
     const { searchResultBooks, isLoadging } = useSelector(state => state.books);
     const dispatch = useDispatch();
 
-    const getBooks = () => {
+    const getBooks = useCallback((e) => {
+        e.preventDefault();
         dispatch({ type: SEARCH_BOOK_REQUEST, offset: searchResultBooks.length })
-    }
+    }, [searchResultBooks])
+
 
     return (
         <>
-            {isLoadging && <h1>로딩 중......</h1>}
+
             {!isLoadging && searchResultBooks.map((book, index) => {
                 return (
                     <div key={index}>
@@ -23,7 +25,8 @@ const searchResultList = () => {
                     </div>
                 )
             })}
-            <button onClick={getBooks}>더 가져오기</button>
+            {isLoadging && <h1>로딩 중......</h1>}
+            <button onClick={getBooks} className="btn" >더 가져오기</button>
         </>
     );
 };

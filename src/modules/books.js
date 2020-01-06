@@ -18,7 +18,6 @@ const initialState = {
   me: null,//유저 정보
   isLoadging: false,
   searchResultBooks: [],
-
   isLoading_recommendedBooks: false,
   recommendedBooks: [],
 };
@@ -29,7 +28,6 @@ const book = {
 };
 const books = handleActions(
   {
-
     //검색결과 API
     [SEARCH_BOOK_REQUEST]: (state, action) => {
       return {
@@ -37,24 +35,18 @@ const books = handleActions(
         isLoadging: true
       }
     },
-
     [SEARCH_BOOK_SUCCESS]: (state, action) => {
-      console.log("search_book_success", action)
       return {
         ...state,
         isLoadging: false,
         searchResultBooks: state.searchResultBooks.concat(action.data),
       }
-
     },
-
     [SEARCH_BOOK_FAILURE]: (state, action) => {
       return {
         ...state,
       }
     },
-
-
 
     //추천도서 API
     [GET_RECOMMENDED_BOOKS_REQUEST]: (state, action) => {
@@ -63,7 +55,6 @@ const books = handleActions(
         isLoading_recommendedBooks: true
       }
     },
-
     [GET_RECOMMENDED_BOOKS_SUCCESS]: (state, action) => {
       return {
         ...state,
@@ -72,17 +63,12 @@ const books = handleActions(
 
       }
     },
-
     [GET_RECOMMENDED_BOOKS_FAILURE]: (state, action) => {
       return {
         ...state,
 
       }
     },
-
-
-
-
 
   },
   initialState
