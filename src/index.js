@@ -8,6 +8,7 @@ import createSagaMiddleware from "redux-saga";
 import rootReducer from "./modules";
 import "./reset.css";
 import rootSaga from "./sagas";
+import "./style.css";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 
