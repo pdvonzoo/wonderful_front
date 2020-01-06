@@ -4,6 +4,7 @@ import styled from "styled-components";
 const SearchContainer = styled.div`
     padding: 1rem 0;
     text-align: center;
+    background-color: #fff;
 `;
 const SearchForm = styled.input`
     border: none;

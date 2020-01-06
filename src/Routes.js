@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Layout from './components/common/Layout'
-import { Admin, BookList, Home, Error, Auth, UserHistory, searchPage } from "./pages";
+import { Admin, BookList, Home, Error, Auth, UserHistory, searchPage, BookDetail } from "./pages";
 
 const Routes = () => {
 
@@ -15,10 +15,8 @@ const Routes = () => {
         <Route path="/error" exact component={Error} />
         <Route path="/userhistory" exact component={UserHistory} />
         <Route path="/admin" exact component={Admin} />
-
+        <Route path="/book" component={BookDetail} />
         <Route path="/search" component={searchPage} />
-        <Route path="*" component={Home} />
-
       </Switch>
     </Router>
   );
