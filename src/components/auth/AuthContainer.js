@@ -7,4 +7,4 @@ const StyledAuthContainer = styled.form`
   padding: 0 1.5rem;
 `;
 
-export default ({ children }) => <StyledAuthContainer>{children}</StyledAuthContainer>;
+export default ({ children, onSubmit }) => <StyledAuthContainer onSubmit={onSubmit}>{children}</StyledAuthContainer>;

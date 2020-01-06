@@ -9,4 +9,4 @@ const StyledSubmitBtn = styled.button`
   
 `;
 
-export default ({ children }) => <StyledSubmitBtn>{children}</StyledSubmitBtn>
+export default ({ children, onClick }) => <StyledSubmitBtn onClick={onClick}>{children}</StyledSubmitBtn>

@@ -52,7 +52,7 @@ const SignInComponent = () => {
   const signInForm = () => (
     <AuthContainer onSubmit={clickSubmit}>
       <FormGroup>
-        <AuthLabel className="text-muted">Email</AuthLabel>
+        <AuthLabel>Email</AuthLabel>
         <AuthTextInput
           onChange={handleChange("email")}
           type="email"
@@ -61,7 +61,7 @@ const SignInComponent = () => {
         />
       </FormGroup>
       <FormGroup>
-        <AuthLabel className="text-muted">Password</AuthLabel>
+        <AuthLabel>Password</AuthLabel>
         <AuthTextInput
           onChange={handleChange("password")}
           type="password"
