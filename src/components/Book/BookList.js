@@ -1,26 +1,17 @@
-import React, { useEffect, useState } from "react";
-import Data from "./data.json";
+import React from "react";
 import Book from "./Book";
-import { rentOneBook } from "./BookListAPI";
-const BookList = () => {
-  const [datas, setDatas] = useState(null);
-  useEffect(() => {
-    setDatas(Data.books);
-    console.log(datas);
-  }, []);
+import styled from "styled-components";
+
+const BooksContainer = styled.div`
+  display: ${props => props.display ? props.display : "block"};
+`;
+
+const BookList = ({ datas, display }) => {
   return (
-    <div>
+    <BooksContainer display={display}>
       {datas &&
-        datas.map((book, index) => {
-          return (
-            <div key={index}>
-              <Book key={index} book={book} />
-              <button onClick={rentOneBook}>책 대여하기</button>
-              <hr />
-            </div>
-          );
-        })}
-    </div>
+        datas.map((book, index) => <Book key={index} book={book} />)}
+    </BooksContainer>
   );
 };
 export default BookList;

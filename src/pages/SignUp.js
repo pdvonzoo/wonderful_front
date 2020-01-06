@@ -1,10 +1,21 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React from "react";
+import styled from "styled-components";
 import SignUpComponent from '../components/User/SignUpComponent'
-const Signup = () => {
+import SignInComponent from "../components/User/SignInComponent";
 
+const AuthForm = styled.div`
+  display: flex;
+  padding: 3rem 3rem 0;
+  background-color: #e4e4e4;
+  height: 100%;
+`;
+
+const Signup = () => {
   return (
-    <SignUpComponent />
+    <AuthForm>
+      <SignInComponent />
+      <SignUpComponent />
+    </AuthForm>
   );
 };
 
