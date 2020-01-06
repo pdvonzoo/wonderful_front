@@ -6,3 +6,4 @@ export { default as Signin } from './SignIn';
 export { default as Signup } from './SignUp'
 export { default as UserHistory } from './UserHistory'
 export { default as searchPage } from './searchPage'
+export { default as MyBooksPage } from './MyBooksPage'
