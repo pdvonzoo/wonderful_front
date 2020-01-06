@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, Redirect } from "react-router-dom";
 import { signin, authenticate, isAuthenticated } from "../../auth";
+import { AuthContainer, AuthLabel, AuthTextInput, FormGroup, SubmitBtn } from "../auth";
 
 import { isEmail, isCelluar, isJobPassword } from '../../Utils/valid'
 const SignInComponent = () => {
@@ -49,30 +50,29 @@ const SignInComponent = () => {
   };
 
   const signInForm = () => (
-    <form onSubmit={clickSubmit}>
-      <div className="form-group">
-        <label className="text-muted">Email</label>
-        <input
+    <AuthContainer onSubmit={clickSubmit}>
+      <FormGroup>
+        <AuthLabel className="text-muted">Email</AuthLabel>
+        <AuthTextInput
           onChange={handleChange("email")}
           type="email"
           className="form-control"
           value={email}
         />
-      </div>
-      <div className="form-group">
-        <label className="text-muted">Password</label>
-        <input
+      </FormGroup>
+      <FormGroup>
+        <AuthLabel className="text-muted">Password</AuthLabel>
+        <AuthTextInput
           onChange={handleChange("password")}
           type="password"
           className="form-control"
           value={password}
         />
-      </div>
-      <button onClick={clickSubmit} className="btn btn-primary">
+      </FormGroup>
+      <SubmitBtn onClick={clickSubmit}>
         Submit
-      </button>
-      <Link to="/signup">Signup</Link>
-    </form>
+      </SubmitBtn>
+    </AuthContainer>
   );
 
   const showError = () => (

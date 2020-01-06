@@ -10,11 +10,7 @@ const BookList = ({ datas, display }) => {
   return (
     <BooksContainer display={display}>
       {datas &&
-        datas.map((book, index) => {
-          return (
-            <Book book={book} />
-          );
-        })}
+        datas.map((book, index) => <Book key={index} book={book} />)}
     </BooksContainer>
   );
 };
