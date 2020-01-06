@@ -20,14 +20,14 @@ const Layout = () => {
   return (
     <>
       <Header>
-        <BaseItem style={{ marginLeft: '15px' }} to={{ pathname: "/" }}>Logo</BaseItem>
-        {/* <BaseItem style={{ marginLeft5 '10px' }} to={{ pathname: "/signin" }}>sign in</BaseItem> */}
-        <BaseItem style={{ marginLeft: '15px' }} to={{ pathname: "/signup" }}>sign in/sign up</BaseItem>
-        <BaseItem style={{ marginLeft: '15px' }} to={{ pathname: "/userhistory" }}>My</BaseItem>
-        <BaseItem style={{ marginLeft: '15px' }} to={{ pathname: "/error" }}>Error</BaseItem>
-        <BaseItem style={{ marginLeft: '15px' }} to={{ pathname: "/admin" }}> admin</BaseItem>
+        <BaseItem style={{ marginLeft: '10px' }} to={{ pathname: "/" }}>Logo</BaseItem>
+        {/* <BaseItem style={{ marginLeft: '10px' }} to={{ pathname: "/signin" }}>sign in</BaseItem> */}
+        <BaseItem style={{ marginLeft: '10px' }} to={{ pathname: "/auth" }}>sign in/sign up</BaseItem>
+        <BaseItem style={{ marginLeft: '10px' }} to={{ pathname: "/userhistory" }}>My</BaseItem>
+        <BaseItem style={{ marginLeft: '10px' }} to={{ pathname: "/error" }}>Error</BaseItem>
+        <BaseItem style={{ marginLeft: '10px' }} to={{ pathname: "/admin" }}> admin</BaseItem>
       </Header>
-      <Search />
+      {/* <Search /> */}
       {/* {children} */}
     </>
   );

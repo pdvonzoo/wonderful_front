@@ -10,7 +10,7 @@ const AuthForm = styled.div`
   height: 100%;
 `;
 
-const Signup = () => {
+export default () => {
   return (
     <AuthForm>
       <SignInComponent />
@@ -18,5 +18,3 @@ const Signup = () => {
     </AuthForm>
   );
 };
-
-export default Signup;
