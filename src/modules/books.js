@@ -59,9 +59,6 @@ const books = handleActions(
         hasMoreSearchBooks: false
       }
     },
-
-
-
     //추천도서 API
     [GET_RECOMMENDED_BOOKS_REQUEST]: (state, action) => {
       return {
