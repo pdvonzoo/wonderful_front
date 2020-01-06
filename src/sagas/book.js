@@ -1,78 +1,76 @@
-import {
-    fork,
-    all,
-    takeLatest,
-    takeEvery,
-    put,
-    delay,
-    call
-} from "redux-saga/effects";
+import axios from "axios";
+import { fork, all, takeLatest, takeEvery, put, call } from "redux-saga/effects";
 
 import {
     SEARCH_BOOK_REQUEST,
     SEARCH_BOOK_SUCCESS,
     SEARCH_BOOK_FAILURE,
-    GET_BOOK_TEST_SUCCESS,
-    GET_BOOK_TEST_FAILURE,
-    GET_BOOK_TEST_REQUEST
+    GET_RECOMMENDED_BOOKS_REQUEST,
+    GET_RECOMMENDED_BOOKS_SUCCESS,
+    GET_RECOMMENDED_BOOKS_FAILURE
 } from "../modules/books";
-import axios from "axios";
 
-function userLoginAPI(actionData) {
-    console.log("결과  :", actionData);
-}
-function* search(action) {
-    console.log(action.data)
-    try {
-        yield delay(2000);
-        // yield call(userLoginAPI, action.data);
-        yield put({ type: SEARCH_BOOK_SUCCESS, inputText: action.data });
-    } catch (e) {
-        yield put({ type: SEARCH_BOOK_FAILURE, error: e });
-        console.error(e);
-    }
-}
-function* watchBookSearch() {
-    yield takeEvery(SEARCH_BOOK_REQUEST, search);
-}
+const baseURI = 'http://localhost:5000'
 
 
 
 
 //------------------------------------------------------------------------------------------------------------------------
 
-
-function getBookListAPI(offset = 0, limit = 3) {
+//검색 결과 책들 가져오기
+function searchBooksAPI(offset = 0, limit = 2) {
     console.log(limit, offset)
-    return axios.get(`http://localhost:5000/post?offset=${offset}&limit=${limit}`)
+    return axios.get(`${baseURI}/post?offset=${offset}&limit=${limit}`)
 }
 
-function* search_list(action) {
-    console.log("search_list", action)
+function* searchBooks(action) {
     try {
-        const result = yield call(getBookListAPI, action.offset);
-        console.log("result ", result)
+        const result = yield call(searchBooksAPI, action.offset);
         yield put({
-            type: GET_BOOK_TEST_SUCCESS,
+            type: SEARCH_BOOK_SUCCESS,
             data: result.data
         })
     } catch (e) {
         yield put({
-            type: GET_BOOK_TEST_FAILURE,
+            type: SEARCH_BOOK_FAILURE,
             error: e
         })
     }
-
-
 }
-function* getBookList() {
-    yield takeLatest(GET_BOOK_TEST_REQUEST, search_list);
+function* searchBooksSaga() {
+    yield takeLatest(SEARCH_BOOK_REQUEST, searchBooks);
 }
 
 //------------------------------------------------------------------------------------------------------------------------
 
 
+//추천 도서 API
+function getCommendedAPI() {
+    return axios.get(`${baseURI}/getCommendedBooks`);
+}
+
+function* getCommended() {
+    try {
+        const result = yield call(getCommendedAPI);
+        yield put({
+            type: GET_RECOMMENDED_BOOKS_SUCCESS,
+            data: result.data
+        })
+    } catch (e) {
+        yield put({
+            type: GET_RECOMMENDED_BOOKS_FAILURE,
+            error: e
+        })
+    }
+}
+
+function* getCommendedBooksSaga() {
+    yield takeEvery(GET_RECOMMENDED_BOOKS_REQUEST, getCommended);
+}
+
+
+
 
 export default function* userSaga() {
-    yield all([fork(watchBookSearch), fork(getBookList)]);
+    yield all([fork(searchBooksSaga), fork(getCommendedBooksSaga)]);
 }

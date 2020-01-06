@@ -1,72 +1,88 @@
 import { createAction, handleActions } from "redux-actions";
+import searchResultList from "../components/Book/searchResultList";
 
 export const SEARCH_BOOK_REQUEST = "books/SEARCH_BOOK_REQUEST";
 export const SEARCH_BOOK_SUCCESS = 'books/SEARCH_BOOK_SUCCESS'
 export const SEARCH_BOOK_FAILURE = 'books/SEARCH_BOOK_FAILURE'
 
+export const GET_RECOMMENDED_BOOKS_REQUEST = 'books/GET_RECOMMENDED_BOOKS_REQUEST'
+export const GET_RECOMMENDED_BOOKS_FAILURE = 'books/GET_RECOMMENDED_BOOKS_FAILURE'
+export const GET_RECOMMENDED_BOOKS_SUCCESS = 'books/GET_RECOMMENDED_BOOKS_SUCCESS'
 
-export const GET_BOOK_TEST_SUCCESS = 'books/GET_BOOK_TEST_SUCCESS'
-export const GET_BOOK_TEST_FAILURE = 'books/GET_BOOK_TEST_FAILURE'
-export const GET_BOOK_TEST_REQUEST = 'books/GET_BOOK_TEST_REQUEST'
+export const searchBooks = createAction(SEARCH_BOOK_REQUEST);
+export const getLoadCommendedBooks = createAction(GET_RECOMMENDED_BOOKS_REQUEST);
+
+
 
 const initialState = {
-  books: [],
-  me: null,
-  txt: "",
+  me: null,//유저 정보
   isLoadging: false,
-  bulkTest: [],
-  isBookMore: false,
+  searchResultBooks: [],
+
+  isLoading_recommendedBooks: false,
+  recommendedBooks: [],
 };
 const book = {
   title: "자바 8 인 액션",
   writer: "자바의 신",
   publisher: "길 벗"
 };
-const dummyBooks = [book, book, book, book, book, book, book, book];
 const books = handleActions(
   {
+
+    //검색결과 API
     [SEARCH_BOOK_REQUEST]: (state, action) => {
       return {
         ...state,
         isLoadging: true
-      };
+      }
     },
+
     [SEARCH_BOOK_SUCCESS]: (state, action) => {
+      console.log("search_book_success", action)
       return {
         ...state,
-        books: dummyBooks,
-        txt: action.inputText,
         isLoadging: false,
+        searchResultBooks: state.searchResultBooks.concat(action.data),
+      }
 
-      };
     },
+
     [SEARCH_BOOK_FAILURE]: (state, action) => {
       return {
         ...state,
-      };
-    },
-
-
-    [GET_BOOK_TEST_SUCCESS]: (state, action) => {
-      return {
-        ...state,
-        bulkTest: bulkTest.concat(action.data)
-      }
-    },
-
-    [GET_BOOK_TEST_FAILURE]: (state, action) => {
-      return {
-        ...state,
-
       }
     },
 
 
-    [GET_BOOK_TEST_REQUEST]: (state, action) => {
+
+    //추천도서 API
+    [GET_RECOMMENDED_BOOKS_REQUEST]: (state, action) => {
       return {
         ...state,
+        isLoading_recommendedBooks: true
       }
     },
+
+    [GET_RECOMMENDED_BOOKS_SUCCESS]: (state, action) => {
+      return {
+        ...state,
+        recommendedBooks: action.data,
+        isLoading_recommendedBooks: false
+
+      }
+    },
+
+    [GET_RECOMMENDED_BOOKS_FAILURE]: (state, action) => {
+      return {
+        ...state,
+
+      }
+    },
+
+
+
+
 
   },
   initialState
