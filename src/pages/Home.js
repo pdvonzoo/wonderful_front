@@ -3,6 +3,7 @@ import Layout from "../components/common/Layout";
 import Data from "../components/Book/data.json";
 import BookList from "../components/Book/BookList";
 import styled from "styled-components";
+import Search from "../components/Search/Search";
 
 const HomeConatainer = styled.div`
   padding-top: 10rem;
@@ -16,7 +17,10 @@ export default () => {
     setDatas(Data.books);
   }, []);
 
-  return <HomeConatainer>
-    <BookList datas={datas} width="33.3%" display="flex" />
-  </HomeConatainer>;
+  return <>
+    <Search />
+    <HomeConatainer>
+      <BookList datas={datas} width="33.3%" display="flex" />
+    </HomeConatainer>
+  </>;
 };

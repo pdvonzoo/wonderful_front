@@ -27,7 +27,7 @@ const Layout = () => {
         <BaseItem style={{ marginLeft: '10px' }} to={{ pathname: "/error" }}>Error</BaseItem>
         <BaseItem style={{ marginLeft: '10px' }} to={{ pathname: "/admin" }}> admin</BaseItem>
       </Header>
-      <Search />
+      {/* <Search /> */}
       {/* {children} */}
     </>
   );

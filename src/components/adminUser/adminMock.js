@@ -1,4 +1,4 @@
-const user = [
+const users = [
     {
         id: 1,
         name: "aaa",
@@ -112,4 +112,4 @@ const books = [
     }
 ]
 
-export { user, books };
+export { users, books };
