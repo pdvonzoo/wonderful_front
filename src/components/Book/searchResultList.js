@@ -17,7 +17,7 @@ const searchResultList = () => {
                     <div key={index}>
                         <hr />
                         <li>  <img src={book.image} />
-                            /        책 이름 : {book.title} / 책 저자 : {book.author} / 출판 날짜 :{book.pubdate}  / isbn:{book.isbn}
+                            책 이름 : {book.title} / 책 저자 : {book.author} / 출판 날짜 :{book.pubdate}  / isbn:{book.isbn}
                             <button>대여하기</button>
                         </li>
                     </div>
