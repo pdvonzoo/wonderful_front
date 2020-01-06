@@ -1,12 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Layout from './components/common/Layout'
-import { Admin, BookList, Home, Error, Auth, UserHistory, searchPage, BookDetail } from "./pages";
+import { Admin, Home, Error, Auth, UserHistory, BookDetail, searchPage, MyBooksPage } from "./pages";
 
 const Routes = () => {
-
   return (
-
     <Router>
       <Layout />
       <Switch>
@@ -14,9 +12,10 @@ const Routes = () => {
         <Route path="/auth" exact component={Auth} />
         <Route path="/error" exact component={Error} />
         <Route path="/userhistory" exact component={UserHistory} />
-        <Route path="/admin" exact component={Admin} />
         <Route path="/book" component={BookDetail} />
         <Route path="/search" component={searchPage} />
+        <Route path="/admin" component={Admin} />
+        <Route path="/myBooksRoom" component={MyBooksPage} />
       </Switch>
     </Router>
   );

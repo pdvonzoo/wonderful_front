@@ -1,5 +1,5 @@
 import { all, call, takeEvery, takeLatest, delay } from "redux-saga/effects";
-import user from "./user";
+import book from "./book";
 export default function* rootSaga() {
-    yield all([call(user)]);
+    yield all([call(book)]);
 }
