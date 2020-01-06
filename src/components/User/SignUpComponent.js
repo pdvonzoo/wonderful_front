@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { signup } from "../../auth";
-
+import { isEmail, isCelluar, isJobPassword } from '../../Utils/valid'
 const SignUpComponent = () => {
   const [values, setValues] = useState({
     email: "",
@@ -20,6 +20,16 @@ const SignUpComponent = () => {
   const clickSubmit = event => {
     event.preventDefault();
     setValues({ ...values, error: false });
+
+    if (!isEmail(email)) {
+      setValues({ ...values, email: '', error: true, })
+      return alert("이메일 형식이 올바르지 않습니다....")
+    }
+    if (!isJobPassword(password)) {
+      setValues({ ...values, password: '', error: true })
+      return alert("비밀번호는  8 ~ 10자 영문, 숫자 조합의 형식이어야 합니다.")
+    }
+
     signup({ email, password, role }).then(data => {
       console.log(data);
       if (data.error || data.err) {

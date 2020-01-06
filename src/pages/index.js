@@ -5,3 +5,4 @@ export { default as Error } from './Error'
 export { default as Signin } from './SignIn';
 export { default as Signup } from './SignUp'
 export { default as UserHistory } from './UserHistory'
+export { default as searchPage } from './searchPage'

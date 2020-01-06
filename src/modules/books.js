@@ -1,12 +1,16 @@
 import { createAction, handleActions } from "redux-actions";
 
-export const SEARCH_A_BOOK = "books/SEARCH_A_BOOK";
-
-export const searchbook = createAction(SEARCH_A_BOOK);
+export const SEARCH_BOOK_REQUEST = "books/SEARCH_BOOK_REQUEST";
+export const SEARCH_BOOK_SUCCESS = 'books/SEARCH_BOOK_SUCCESS'
+export const SEARCH_BOOK_FAILURE = 'books/SEARCH_BOOK_FAILURE'
+// export const searchbook = createAction(SEARCH_BOOK_REQUEST);
 
 const initialState = {
   books: [],
-  me: null
+  me: null,
+  txt: "",
+  isLoadging: false
+
 };
 const book = {
   title: "자바 8 인 액션",
@@ -16,12 +20,26 @@ const book = {
 const dummyBooks = [book, book, book, book, book, book, book, book];
 const books = handleActions(
   {
-    [SEARCH_A_BOOK]: (state, action) => {
+    [SEARCH_BOOK_REQUEST]: (state, action) => {
       return {
         ...state,
-        books: dummyBooks
+        isLoadging: true
       };
-    }
+    },
+    [SEARCH_BOOK_SUCCESS]: (state, action) => {
+      return {
+        ...state,
+        books: dummyBooks,
+        txt: action.data,
+        isLoadging: false
+      };
+    },
+    [SEARCH_BOOK_FAILURE]: (state, action) => {
+      return {
+        ...state,
+      };
+    },
+
   },
   initialState
 );
