@@ -25,7 +25,8 @@ const UserHistory = () => {
           대여 이력 조회
         </button>
       </div>
-      {clickPage === "1" ? <RentList /> : <UserBooks />}
+      {/* {clickPage === "1" ? <RentList /> : <UserBooks />} */}
+      <RentList />
     </>
   );
 };
