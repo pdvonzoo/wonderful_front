@@ -6,7 +6,7 @@ const searchResultList = () => {
     const dispatch = useDispatch();
 
     const getBooks = useCallback((e) => {
-        e.preventDefault();
+        e.preventDefault()
         dispatch({ type: SEARCH_BOOK_REQUEST, offset: searchResultBooks.length })
     }, [searchResultBooks])
 
@@ -26,7 +26,7 @@ const searchResultList = () => {
                 )
             })}
             {isLoadging && <h1>로딩 중......</h1>}
-            <button onClick={getBooks} className="btn" >더 가져오기</button>
+            <div onClick={getBooks} className="btn" >더 가져오기</div>
         </>
     );
 };
