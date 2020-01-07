@@ -19,7 +19,6 @@ const baseURI = 'http://localhost:5000'
 
 //검색 결과 책들 가져오기
 function searchBooksAPI(offset = 0, limit = 20) {
-    console.log(limit, offset)
     return axios.get(`${baseURI}/post?offset=${offset}&limit=${limit}`)
 }
 
@@ -67,6 +66,10 @@ function* getCommended() {
 function* getCommendedBooksSaga() {
     yield takeEvery(GET_RECOMMENDED_BOOKS_REQUEST, getCommended);
 }
+
+
+//------------------------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------------------------
 
 
 
