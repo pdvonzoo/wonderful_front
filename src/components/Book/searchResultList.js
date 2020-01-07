@@ -1,19 +1,36 @@
-import React from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
+import { SEARCH_BOOK_REQUEST } from '../../modules/books'
+import SearchABook from './searchABook';
 
 const searchResultList = () => {
-    const { books, isLoadging } = useSelector(state => state.books);
+
+    const { searchResultBooks, isLoadging, hasMoreSearchBooks } = useSelector(state => state.books);
+    const dispatch = useDispatch();
+    const onScroll = () => {
+        // console.log(window.scrollY, document.documentElement.clientHeight, document.documentElement.scrollHeight)
+        if (window.scrollY + document.documentElement.clientHeight > document.documentElement.scrollHeight - 280) {
+            if (hasMoreSearchBooks) {
+                console.log('hasMoreSearchBooks 가 true임')
+                dispatch({ type: SEARCH_BOOK_REQUEST, offset: searchResultBooks.length })
+            }
+
+        }
+    }
+    useEffect(() => {
+        window.addEventListener('scroll', onScroll);
+        return () => {
+            window.removeEventListener('scroll', onScroll)
+        }
+    }, [searchResultBooks.length, hasMoreSearchBooks])
+
 
     return (
         <>
-            {isLoadging && <h1>로딩 중......</h1>}
-            {!isLoadging && books && books.map((val, idx) => {
+            {/* {isLoadging && <h1>로딩 중......</h1>} */}
+            {searchResultBooks.map((book, index) => {
                 return (
-                    <div key={idx} style={{ border: "1px solid red" }}>
-                        <p>책 이름 : {val.title}</p>
-                        <p>책 저자 : {val.writer}</p>
-                        <p>출판사 :  {val.pubpsher}</p>
-                    </div>
+                    <SearchABook key={index} title={book.title} author={book.author} image={book.image} pubdate={book.pubdate} isbn={book.isbn} />
                 )
             })}
         </>
