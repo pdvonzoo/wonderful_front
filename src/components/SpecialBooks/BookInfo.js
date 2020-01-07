@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import SmallHr from "../common/SmallHr";
 
 const Container = styled.ul`
   padding: 1.75rem 1.25rem;
@@ -14,15 +15,6 @@ const ListTitle = styled.li`
   font-family: Chivo,sans-serif;
   margin-bottom: .75rem;
 `;
-const SmallHr = styled.hr`
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  box-sizing: content-box;
-  height: 0;
-  width: 2rem;
-  overflow: visible;
-  border: 1px solid #343434;
-`;
 const ListText = styled.li`
   font-family: 'Chivo', sans-serif;
   font-size: .9rem;
@@ -36,10 +28,10 @@ const RentalBtn = styled.button`
 `;
 
 export default () => {
-    return <Container>
-        <ListTitle>{title}</ListTitle>
-        <SmallHr></SmallHr>
-        <ListText>{writer}</ListText>
-        <RentalBtn onClick={rentOneBook}>책 대여하기</RentalBtn>
-    </Container>;
+  return <Container>
+    <ListTitle>{title}</ListTitle>
+    <SmallHr />
+    <ListText>{writer}</ListText>
+    <RentalBtn onClick={rentOneBook}>책 대여하기</RentalBtn>
+  </Container>;
 }
