@@ -21,6 +21,7 @@ const initialState = {
   hasMoreSearchBooks: false,
   isLoading_recommendedBooks: false,
   recommendedBooks: [],
+  searchText: '',
 };
 
 const books = handleActions(
@@ -38,6 +39,7 @@ const books = handleActions(
       return {
         ...state,
         isLoadging: false,
+        searchText: action.search,
         searchResultBooks: state.searchResultBooks.concat(action.data),
         hasMoreSearchBooks: action.data.length === dataLimitLength
       }
