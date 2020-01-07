@@ -1,12 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { signup } from "../../auth";
-<<<<<<< HEAD
 import { isEmail, isCelluar, isJobPassword } from '../../Utils/valid'
-=======
 import { AuthContainer, AuthLabel, AuthTextInput, FormGroup, SubmitBtn } from "../auth";
 
->>>>>>> feat: signup, signin 한 페이지에 정렬
 const SignUpComponent = () => {
   const [values, setValues] = useState({
     email: "",
