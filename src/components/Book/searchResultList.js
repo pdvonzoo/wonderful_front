@@ -11,6 +11,7 @@ const searchResultList = () => {
         // console.log(window.scrollY, document.documentElement.clientHeight, document.documentElement.scrollHeight)
         if (window.scrollY + document.documentElement.clientHeight > document.documentElement.scrollHeight - 280) {
             if (hasMoreSearchBooks) {
+                console.log('hasMoreSearchBooks 가 true임')
                 dispatch({ type: SEARCH_BOOK_REQUEST, offset: searchResultBooks.length })
             }
 
@@ -21,7 +22,7 @@ const searchResultList = () => {
         return () => {
             window.removeEventListener('scroll', onScroll)
         }
-    }, [searchResultBooks.length])
+    }, [searchResultBooks.length, hasMoreSearchBooks])
 
 
     return (

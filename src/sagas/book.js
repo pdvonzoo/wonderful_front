@@ -12,17 +12,18 @@ import {
 
 const baseURI = 'http://localhost:5000'
 
-
-
+import { dataLimitLength } from '../modules/books'
 
 //------------------------------------------------------------------------------------------------------------------------
 
 //검색 결과 책들 가져오기
-function searchBooksAPI(offset = 0, limit = 20) {
+function searchBooksAPI(offset = 0, limit = dataLimitLength) {
     return axios.get(`${baseURI}/post?offset=${offset}&limit=${limit}`)
 }
 
 function* searchBooks(action) {
+
+
     try {
         const result = yield call(searchBooksAPI, action.offset);
         yield put({
@@ -69,6 +70,7 @@ function* getCommendedBooksSaga() {
 
 
 //------------------------------------------------------------------------------------------------------------------------
+
 //------------------------------------------------------------------------------------------------------------------------
 
 
