@@ -11,18 +11,21 @@ const Container = styled.ul`
 
 const searchResultList = () => {
 
-    const { searchResultBooks, isLoadging, hasMoreSearchBooks } = useSelector(state => state.books);
+    const { searchResultBooks, searchText, isLoadging, hasMoreSearchBooks } = useSelector(state => state.books);
     const dispatch = useDispatch();
+
     const onScroll = () => {
-        // console.log(window.scrollY, document.documentElement.clientHeight, document.documentElement.scrollHeight)
         if (window.scrollY + document.documentElement.clientHeight > document.documentElement.scrollHeight - 280) {
             if (hasMoreSearchBooks) {
-                console.log('hasMoreSearchBooks 가 true임')
-                dispatch({ type: SEARCH_BOOK_REQUEST, offset: searchResultBooks.length })
+                const data = {
+                    search: searchText,
+                    offset: searchResultBooks.length
+                }
+                dispatch({ type: SEARCH_BOOK_REQUEST, data })
             }
-
         }
     }
+
     useEffect(() => {
         window.addEventListener('scroll', onScroll);
         return () => {
