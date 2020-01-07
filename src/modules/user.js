@@ -1,45 +1,42 @@
 import { createAction, handleActions } from "redux-actions";
-export const GET_MY_BOOKS_REQUEST = 'books/GET_MY_BOOKS_REQUEST'
-export const GET_MY_BOOKS_SUCCESS = 'books/GET_MY_BOOKS_SUCCESS'
-export const GET_MY_BOOKS_FAILURE = 'books/GET_MY_BOOKS_FAILURE'
+export const GET_MY_BOOKS_LOOKUP_REQUEST = 'books/GET_MY_BOOKS_REQUEST'
+export const GET_MY_BOOKS_LOOKUP_SUCCESS = 'books/GET_MY_BOOKS_SUCCESS'
+export const GET_MY_BOOKS_LOOKUP_FAILURE = 'books/GET_MY_BOOKS_FAILURE'
 
 
-export const getMyBooks = createAction(GET_MY_BOOKS_REQUEST);
+export const getMyBooksLookUp = createAction(GET_MY_BOOKS_LOOKUP_REQUEST);
+
+
 const initialState = {
-    userBooks: [],
+    userLookUpBooks: [],
     isLoading: false
 
 }
-const book = {
-    name: "자바8",
-    writer: "보솜이"
-}
-const dummyBooks = [
-    book, book, book, book, book, book, book, book, book, book,
-]
 
 
 const user = handleActions(
     {
-        [GET_MY_BOOKS_REQUEST]: (state, action) => {
+        [GET_MY_BOOKS_LOOKUP_REQUEST]: (state, action) => {
             return {
                 ...state,
-                isLoading: true
+                isLoading: true,
+
             }
         },
 
-        [GET_MY_BOOKS_SUCCESS]: (state, action) => {
+        [GET_MY_BOOKS_LOOKUP_SUCCESS]: (state, action) => {
             return {
                 ...state,
                 isLoading: false,
-                userBooks: dummyBooks
+                userLookUpBooks: action.data
             }
         },
 
 
-        [GET_MY_BOOKS_FAILURE]: (state, action) => {
+        [GET_MY_BOOKS_LOOKUP_FAILURE]: (state, action) => {
             return {
                 ...state,
+                isLoading: false,
             }
         },
     },
