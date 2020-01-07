@@ -13,7 +13,7 @@ export const searchBooks = createAction(SEARCH_BOOK_REQUEST);
 export const getLoadCommendedBooks = createAction(GET_RECOMMENDED_BOOKS_REQUEST);
 
 
-
+const dataLimitLength = 20;
 const initialState = {
   me: null,//유저 정보
   isLoadging: false,
@@ -22,34 +22,28 @@ const initialState = {
   isLoading_recommendedBooks: false,
   recommendedBooks: [],
 };
-const book = {
-  title: "자바 8 인 액션",
-  writer: "자바의 신",
-  publisher: "길 벗"
-};
+
 const books = handleActions(
   {
     //검색결과 API
     [SEARCH_BOOK_REQUEST]: (state, action) => {
+      console.log("search_request", action)
       return {
         ...state,
         isLoadging: true,
-        hasMoreSearchBooks: searchBooks.length ? state.hasMoreSearchBooks : true
+        hasMoreSearchBooks: state.searchResultBooks.length ? state.hasMoreSearchBooks : true
       }
     },
     [SEARCH_BOOK_SUCCESS]: (state, action) => {
-      console.log("search_book_success", action)
-      if (action.data.length === 0) {
-        return state;
-      }
       return {
         ...state,
         isLoadging: false,
         searchResultBooks: state.searchResultBooks.concat(action.data),
-        hasMoreSearchBooks: action.data.length === 20
+        hasMoreSearchBooks: action.data.length === dataLimitLength
       }
     },
     [SEARCH_BOOK_FAILURE]: (state, action) => {
+
       return {
         ...state,
         hasMoreSearchBooks: false
