@@ -16,12 +16,10 @@ const baseURI = 'http://localhost:5000'
 
 //검색 결과 책들 가져오기
 function searchBooksAPI(data, limit = dataLimitLength) {
-    console.log(data)
     return axios.get(`${baseURI}/post?search=${data.search}&offset=${data.offset}&limit=${limit}`)
 }
 
 function* searchBooks(action) {
-    console.log('searchBooks', action)
     try {
 
         const result = yield call(searchBooksAPI, action.data);

@@ -12,6 +12,7 @@ const baseURI = 'http://localhost:5000'
 //------------------------------------------------------------------------------------------------------------------------
 
 function getMyBooksLookUpAPI() {
+    console.log('여기왔어욘')
     return axios.get(`${baseURI}/historylookup`);
 }
 
@@ -19,6 +20,7 @@ function* getMyBooksLookUp() {
     console.log("getMyBooksLookUp")
     try {
         const result = yield call(getMyBooksLookUpAPI);
+        console.log(result)
         yield put({
             type: GET_MY_BOOKS_LOOKUP_SUCCESS,
             data: result.data
@@ -31,6 +33,7 @@ function* getMyBooksLookUp() {
     }
 }
 function* getMyBooksLookupSaga() {
+    console.log('Hi')
     yield takeEvery(GET_MY_BOOKS_LOOKUP_REQUEST, getMyBooksLookUp);
 }
 

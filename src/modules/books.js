@@ -1,16 +1,24 @@
 import { createAction, handleActions } from "redux-actions";
 import searchResultList from "../components/Book/searchResultList";
 
-export const SEARCH_BOOK_REQUEST = "books/SEARCH_BOOK_REQUEST";
+export const SEARCH_BOOK_REQUEST = "books/SEARCH_BOOK_REQUEST";  //검색하기
 export const SEARCH_BOOK_SUCCESS = 'books/SEARCH_BOOK_SUCCESS'
 export const SEARCH_BOOK_FAILURE = 'books/SEARCH_BOOK_FAILURE'
 
-export const GET_RECOMMENDED_BOOKS_REQUEST = 'books/GET_RECOMMENDED_BOOKS_REQUEST'
+export const GET_RECOMMENDED_BOOKS_REQUEST = 'books/GET_RECOMMENDED_BOOKS_REQUEST'  //추천 책 리스트 가져오기
 export const GET_RECOMMENDED_BOOKS_FAILURE = 'books/GET_RECOMMENDED_BOOKS_FAILURE'
 export const GET_RECOMMENDED_BOOKS_SUCCESS = 'books/GET_RECOMMENDED_BOOKS_SUCCESS'
 
+export const SEARCH_A_BOOK_REQUEST = 'books/SEARCH_A_BOOK_REQUEST';
+export const SEARCH_A_BOOK_SUCCESS = 'books/SEARCH_A_BOOK_SUCCESS';
+export const SEARCH_A_BOOK_FAILURE = 'books/SEARCH_A_BOOK_FAILURE';
+
+
+
 export const searchBooks = createAction(SEARCH_BOOK_REQUEST);
 export const getLoadCommendedBooks = createAction(GET_RECOMMENDED_BOOKS_REQUEST);
+
+
 
 
 export const dataLimitLength = 10; //가져오는 책의 길이
@@ -28,7 +36,6 @@ const books = handleActions(
   {
     //검색결과 API
     [SEARCH_BOOK_REQUEST]: (state, action) => {
-      console.log("search_request", action)
       return {
         ...state,
         isLoadging: true,

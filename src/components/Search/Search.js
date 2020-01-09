@@ -34,7 +34,7 @@ export default () => {
         setSearch(e.target.value)
     }, [search])
 
-    const searchSubmit = useCallback((e) => {
+    const searchSubmit = useCallback(() => {
         if (!isBlank(search)) {
             return alert("한글자 이상이어야 합니다.")
         }
