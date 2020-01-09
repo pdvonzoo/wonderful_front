@@ -4,6 +4,9 @@ import { signin, authenticate, isAuthenticated } from "../../auth";
 import { AuthContainer, AuthLabel, AuthTextInput, FormGroup, SubmitBtn } from "../auth";
 
 import { isEmail, isCelluar, isJobPassword } from '../../Utils/valid'
+
+import { isLogged } from '../../modules/user';
+
 const SignInComponent = () => {
   const [values, setValues] = useState({
     email: "",
@@ -28,6 +31,7 @@ const SignInComponent = () => {
       setValues({ ...values, email: '', password: '', error: true, loading: false })
       return alert("이메일 형식이 올바르지 않습니다....")
     }
+
     if (!isJobPassword(password)) {
       setValues({ ...values, email: '', password: '', error: true, loading: false })
       return alert("비밀번호는  8 ~ 10자 영문, 숫자 조합의 형식이어야 합니다.")
@@ -90,6 +94,7 @@ const SignInComponent = () => {
         <h2>Loading...</h2>
       </div>
     );
+
   const redirectUser = () => {
     if (redirectToRefferrer) {
       if (user && user.role === 1) {

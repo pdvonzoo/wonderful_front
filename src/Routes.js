@@ -13,7 +13,7 @@ const Routes = () => {
         <Route path="/error" exact component={Error404} />
         <Route path="/userhistory" exact component={UserHistory} />
         <Route path="/book" component={BookDetail} />
-        <Route path="/search" component={searchPage} />
+        <Route path="/search/:id" component={searchPage} />
         <Route path="/admin" component={Admin} />
         <Route path="/myBooksRoom" component={MyBooksPage} />
       </Switch>
