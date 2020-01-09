@@ -16,16 +16,7 @@ const UserHistory = () => {
 
   return (
     <>
-      <p>UserHistory</p>
-      <div>
-        <button value={1} onClick={changePage}>
-          신청 조회
-        </button>
-        <button value={2} onClick={changePage}>
-          대여 이력 조회
-        </button>
-      </div>
-      {/* {clickPage === "1" ? <RentList /> : <UserBooks />} */}
+
       <RentList />
     </>
   );

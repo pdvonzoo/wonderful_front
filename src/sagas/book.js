@@ -9,27 +9,24 @@ import {
     GET_RECOMMENDED_BOOKS_SUCCESS,
     GET_RECOMMENDED_BOOKS_FAILURE
 } from "../modules/books";
+import { dataLimitLength } from '../modules/books'
+
 
 const baseURI = 'http://localhost:5000'
 
-
-
-
-//------------------------------------------------------------------------------------------------------------------------
-
 //검색 결과 책들 가져오기
-function searchBooksAPI(offset = 0, limit = 20) {
-    return axios.get(`${baseURI}/post?offset=${offset}&limit=${limit}`)
+function searchBooksAPI(data, limit = dataLimitLength) {
+    return axios.get(`${baseURI}/post?search=${data.search}&offset=${data.offset}&limit=${limit}`)
 }
 
 function* searchBooks(action) {
-
-
     try {
-        const result = yield call(searchBooksAPI, action.offset);
+
+        const result = yield call(searchBooksAPI, action.data);
         yield put({
             type: SEARCH_BOOK_SUCCESS,
-            data: result.data
+            data: result.data,
+            search: action.data.search
         })
     } catch (e) {
         yield put({
@@ -43,7 +40,6 @@ function* searchBooksSaga() {
 }
 
 //------------------------------------------------------------------------------------------------------------------------
-
 
 //추천 도서 API
 function getCommendedAPI() {
@@ -69,14 +65,7 @@ function* getCommendedBooksSaga() {
     yield takeEvery(GET_RECOMMENDED_BOOKS_REQUEST, getCommended);
 }
 
-
 //------------------------------------------------------------------------------------------------------------------------
-
-//------------------------------------------------------------------------------------------------------------------------
-
-
-
-
 export default function* userSaga() {
     yield all([fork(searchBooksSaga), fork(getCommendedBooksSaga)]);
 }
